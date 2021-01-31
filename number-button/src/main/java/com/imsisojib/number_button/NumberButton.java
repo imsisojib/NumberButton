@@ -2,6 +2,7 @@ package com.imsisojib.number_button;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -26,11 +28,13 @@ public class NumberButton extends RelativeLayout {
     ImageButton btnDec,btnInc;
 
     /**Drawables*/
-    Drawable numberDrawable;
+    Drawable numberDrawable,incIcon,decIcon;
     float cardElevation,cardRadius;
     float number = 1;
-    float incrementValue = 1;
+    float incrementValue,numberTextSize;
+    int incIconHeight, decIconHeight;
     int textColor,backGroundColor;
+    String numberTextStyle="";
     boolean isIntegerIncrement = true;
 
     public NumberButton(Context context) {
@@ -63,10 +67,21 @@ public class NumberButton extends RelativeLayout {
                 styleAttr,0);
 
         numberDrawable = arr.getDrawable(R.styleable.NumberButtonBasic_numberDrawable);
+        incIcon = arr.getDrawable(R.styleable.NumberButtonBasic_incIconSrc);
+        decIcon = arr.getDrawable(R.styleable.NumberButtonBasic_decIconSrc);
         cardElevation = arr.getFloat(R.styleable.NumberButtonBasic_btnElevation,6);
+
         textColor = arr.getColor(R.styleable.NumberButtonBasic_numberTextColor,getResources().getColor(R.color.black));
+        numberTextStyle = arr.getString(R.styleable.NumberButtonBasic_numberTextStyle);
+
         backGroundColor = arr.getColor(R.styleable.NumberButtonBasic_btnBackgroundColor,getResources().getColor(R.color.design_default_color_background));
         incrementValue = arr.getFloat(R.styleable.NumberButtonBasic_incrementValue,1);
+        cardRadius = arr.getFloat(R.styleable.NumberButtonBasic_btnRadius,8);
+
+        numberTextSize = arr.getFloat(R.styleable.NumberButtonBasic_numberTextSize,18);
+
+        incIconHeight = arr.getInteger(R.styleable.NumberButtonBasic_incIconHeight,24);
+        decIconHeight = arr.getInteger(R.styleable.NumberButtonBasic_decIconHeight,24);
 
         checkIsIntegerOrFloat();
 
@@ -110,10 +125,24 @@ public class NumberButton extends RelativeLayout {
         if (numberDrawable!=null){
             setNumberDrawable(numberDrawable);
         }
+        if (incIcon!=null){
+            setIncrementIcon(incIcon);
+        }
+        if (decIcon!=null){
+            setDecrementIcon(decIcon);
+        }
 
-        cardView.setCardElevation(cardElevation);
-        etNumber.setTextColor(textColor);
-        cardView.setCardBackgroundColor(backGroundColor);
+        setIncrementIconMaxHeight(incIconHeight);
+        setDecrementIconMaxHeight(decIconHeight);
+
+        setButtonElevation(cardElevation);
+        setButtonBackgroundColor(backGroundColor);
+        setButtonRadius(cardRadius);
+
+        setNumberTextColor(textColor);
+        setNumberTextStyle(numberTextStyle);
+        setNumberTextSize(numberTextSize);
+
 
         arr.recycle();
     }
@@ -129,6 +158,58 @@ public class NumberButton extends RelativeLayout {
     public void setNumberDrawable(Drawable drawable){
         etNumber.setBackground(drawable);
     }
+    public void setIncrementIcon(Drawable drawable){
+        btnInc.setImageDrawable(drawable);
+    }
+    public void setDecrementIcon(Drawable drawable){
+        btnDec.setImageDrawable(drawable);
+    }
+    public void setIncrementIconMaxHeight(int height){
+        btnInc.setMaxHeight(height);
+
+    }
+    public void setDecrementIconMaxHeight(int height){
+        btnDec.setMaxHeight(height);
+
+    }
+    public void setButtonRadius(float cardRadius) {
+        cardView.setRadius(cardRadius);
+    }
+    public void setButtonBackgroundColor(int backGroundColor) {
+        cardView.setCardBackgroundColor(backGroundColor);
+
+    }
+    public void setNumberTextColor(int textColor) {
+        etNumber.setTextColor(textColor);
+
+    }
+    public void setButtonElevation(float cardElevation) {
+        cardView.setCardElevation(cardElevation);
+
+    }
+    public void setNumberTextStyle(String numberTextStyle) {
+        if (numberTextStyle.isEmpty()) return;
+        switch (numberTextStyle){
+            case "bold":{
+                etNumber.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                break;
+            }
+            case "italic:":{
+                etNumber.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+                break;
+            }
+            case "bold|italic":{
+                etNumber.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                break;
+            }
+            default: etNumber.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+        }
+    }
+
+    public void setNumberTextSize(float numberTextSize) {
+        etNumber.setTextSize(numberTextSize);
+    }
+
 
     /**GETTERS*/
     public float getNumber(){

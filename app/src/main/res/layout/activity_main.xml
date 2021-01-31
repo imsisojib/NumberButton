@@ -11,9 +11,11 @@
 
     <com.imsisojib.number_button.NumberButton
         android:layout_marginTop="16dp"
-        app:btnElevation = "0"
-        app:btnBackgroundColor="@color/design_default_color_secondary_variant"
-        app:numberTextColor = "@color/teal_700"
+        app:btnElevation = "8"
+        app:btnBackgroundColor="@android:color/holo_orange_light"
+        app:btnRadius = "10"
+        app:numberTextStyle="bold"
+        app:numberTextSize="22"
         android:id="@+id/number_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

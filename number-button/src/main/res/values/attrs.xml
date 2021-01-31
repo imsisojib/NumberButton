@@ -17,6 +17,7 @@
 
         <attr name="numberTextColor" format="color"/>
         <attr name="numberTextSize" format="float"/>
+        <attr name="numberTextStyle" format="string"/>
         <attr name="incrementValue" format="float"/>
 
     </declare-styleable>
