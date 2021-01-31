@@ -14,7 +14,7 @@
         app:btnElevation = "8"
         app:btnBackgroundColor="@android:color/holo_orange_light"
         app:btnRadius = "10"
-        app:numberTextStyle="bold"
+        app:numberDrawable="@drawable/number_drawable"
         app:numberTextSize="22"
         android:id="@+id/number_button"
         android:layout_width="match_parent"

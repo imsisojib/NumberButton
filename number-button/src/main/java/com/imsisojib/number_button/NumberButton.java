@@ -78,7 +78,7 @@ public class NumberButton extends RelativeLayout {
         incrementValue = arr.getFloat(R.styleable.NumberButtonBasic_incrementValue,1);
         cardRadius = arr.getFloat(R.styleable.NumberButtonBasic_btnRadius,8);
 
-        numberTextSize = arr.getFloat(R.styleable.NumberButtonBasic_numberTextSize,18);
+        numberTextSize = arr.getFloat(R.styleable.NumberButtonBasic_numberTextSize,16);
 
         incIconHeight = arr.getInteger(R.styleable.NumberButtonBasic_incIconHeight,24);
         decIconHeight = arr.getInteger(R.styleable.NumberButtonBasic_decIconHeight,24);
@@ -188,7 +188,7 @@ public class NumberButton extends RelativeLayout {
 
     }
     public void setNumberTextStyle(String numberTextStyle) {
-        if (numberTextStyle.isEmpty()) return;
+        if (numberTextStyle==null) return;
         switch (numberTextStyle){
             case "bold":{
                 etNumber.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));

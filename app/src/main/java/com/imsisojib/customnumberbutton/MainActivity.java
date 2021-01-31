@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         numberButton = findViewById(R.id.number_button);
+        numberButton.setNumberTextSize(16);
 
         findViewById(R.id.button_save).setOnClickListener(v -> {
             float number = numberButton.getNumber();
