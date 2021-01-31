@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         numberButton = findViewById(R.id.number_button);
 
         findViewById(R.id.button_save).setOnClickListener(v -> {
-            int number = numberButton.getNumber();
+            float number = numberButton.getNumber();
             Toast.makeText(this, "Number = "+number, Toast.LENGTH_SHORT).show();
         });
 
