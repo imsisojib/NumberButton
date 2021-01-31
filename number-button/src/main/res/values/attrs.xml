@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="GradientArtistBasic">
+    <declare-styleable name="NumberButtonBasic">
         <attr name="numberDrawable" format="reference"/>
+
+        <attr name="btnRadius" format="float"/>
+        <attr name="btnElevation" format="float"/>
+        <attr name="btnBackgroundColor" format="color"/>
+
+        <attr name="incIconSrc" format="reference"/>
+        <attr name="incIconHeight" format="float"/>
+
+        <attr name="decIconSrc" format="reference"/>
+        <attr name="decIconHeight" format="integer"/>
+
+
+
+        <attr name="numberTextColor" format="color"/>
+        <attr name="numberTextSize" format="float"/>
+        <attr name="incrementValue" format="float"/>
+
     </declare-styleable>
 </resources>
