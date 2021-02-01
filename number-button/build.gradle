@@ -1,9 +1,12 @@
 plugins {
     id 'com.android.library'
-    id 'com.github.dcendents.android-maven'
-    id 'com.jfrog.bintray'
-
 }
+
+
+    tasks.withType(Javadoc).all {
+        enabled = false
+    }
+
 
 android {
     compileSdkVersion 30
@@ -33,33 +36,27 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation "androidx.cardview:cardview:1.0.0"
-
-}
-
-tasks.withType(Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
-    options.addStringOption('encoding', 'UTF-8')
 }
 
 ext {
     bintrayRepo = 'NumberButton'
-    bintrayName = 'NumberButton'
+    bintrayName = 'com.imsisojib.number_button'
     publishedGroupId = 'com.imsisojib.number_button'
     libraryName = 'number-button'
     artifact = 'number-button'
 
     libraryDescription = 'NumberButton is an Android Library for Increment or Decrement a number to use at total item number ordering in e-commerce app.'
-    siteUrl = 'https://github.com/imsisojib/NumberButton-Android-Library'
-    gitUrl = 'https://github.com/imsisojib/NumberButton-Android-Library.git'
+    siteUrl = 'https://github.com/imsisojib/NumberButton'
+    gitUrl = 'https://github.com/imsisojib/NumberButton.git'
     libraryVersion = '1.0.0'
 
     developerId = 'imsisojib'
+    userOrganisation = "solode"
     developerName = 'MD SIRAJUL ISLAM SOJIB'
     developerEmail = 'imsisojib@gmail.com'
 
@@ -69,5 +66,6 @@ ext {
 }
 
 // Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/imsisojib/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/imsisojib/JCenter/master/bintrayv1.gradle'
+apply from: 'publish.gradle'
+//apply from: 'https://raw.githubusercontent.com/imsisojib/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/imsisojib/JCenter/master/bintrayv1.gradle'
