@@ -10,9 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
@@ -23,6 +21,8 @@ public class NumberButton extends RelativeLayout {
     private View view;
 
     /** Core Components*/
+
+
     CardView cardView;
     EditText etNumber;
     ImageButton btnDec,btnInc;
